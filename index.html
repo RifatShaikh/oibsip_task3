@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="buttons" id="btn">
+            <input type="text" name="screen" id="display">
+            <button style="background-color: red; color: white;">C</button>
+            <button style="background-color: rgb(165, 165, 250);">(</button>
+            <button style="background-color: rgb(165, 165, 250);">)</button>
+            <button style="background-color: rgb(165, 165, 250);">%</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button style="background-color: rgb(165, 165, 250);">x</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button style="background-color: rgb(165, 165, 250);">-</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button style="background-color: rgb(165, 165, 250);">+</button>
+            <button>0</button>
+            <button>.</button>
+            <button style="background-color: rgb(165, 165, 250);">/</button>
+            <button style="background-color: rgb(165, 165, 250);">=</button>
+        </div>
+    </div>
+</body>
+<script>
+    let disp = document.getElementById('display');
+    let bttn = document.querySelectorAll('button');
+    let result = '';
+    for (item of bttn) {
+        item.addEventListener('click', (e) => {
+            buttonText = e.target.innerText;
+            // console.log('button text is', buttonText);
+            if (buttonText == 'x') {
+                buttonText = '*';
+                result += buttonText;
+                disp.value = result;
+            }
+            else if (buttonText == 'C') {
+                result = '';
+                disp.value = result;
+            }
+            else if (buttonText == '=') {
+                disp.value = eval(result);
+            }
+            else if (buttonText == '←') {
+                disp.value = disp.innerText.toString().slice(0, -1);
+            }
+            else {
+                result += buttonText;
+                disp.value = result;
+            }
+        })
+    }
+</script>
+
+</html>
